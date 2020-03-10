@@ -1,0 +1,5 @@
+.box{width: 100px;height: 100px;background-color: blue;position: absolute;z-index: 1;left: 0;top:0}
+.box.active{background-color: #FF00FF}
+.btn-del{background-color: blue!important;color: azure!important;}
+.banner{width: 600px;height: 350px;}
+.App{width: 100vw;height: 100vh;background-color: #FF00FF}

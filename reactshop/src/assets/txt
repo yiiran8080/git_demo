@@ -1,0 +1,53 @@
+<div className={Css['goods-level-wrap']} key={index}>
+                                    <div className={Css['classify-title']+" "+Css['color'+(index+1)]}>{item.title}</div>
+                                    {/*  index 1：品牌男装*/}
+                                    {index % 2 === 1 ?
+                                        <div className={Css['goods-level1-wrap']}>
+                                            <div className={Css['goods-level1-item0']}>
+                                                <div className={Css['goods-title2']}>高跟鞋女2019新款春季单鞋仙女尖头防水一字带</div>
+                                                <div className={Css['goods-text2']}>火爆开售</div>
+                                                <div className={Css['goods-img2']}><img src=""/></div>
+                                            </div>
+                                            <div className={Css['goods-list-wrap']}>
+                                                <div className={Css['goods-list']}>
+                                                    <div className={Css['title']}>小白鞋女2019春夏新款韩版百搭平底学生帆布鞋板鞋</div>
+                                                    <div className={Css['img']}><img src=""/></div>
+                                                    <div className={Css['price']}>￥288</div>
+                                                    <div className={Css['unprice']}>￥388</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        //index0,3:其他分类
+                                        : <div className={Css['goods-level1-wrap']}>
+                                            <div className={Css['goods-level1-item0']}>
+                                                <div className={Css['goods-title']}>高跟鞋女2019新款春季单鞋仙女尖头防水一字带</div>
+                                                <div className={Css['goods-text']}>精品打折</div>
+                                                <div className={Css['goods-price' + (index + 1)]}>128元</div>
+                                                <div className={Css['goods-img']}><img src=""/></div>
+                                            </div>
+                                            <div className={Css['goods-level1-item1']}>
+                                                <div className={Css['goods-row']}>
+                                                    <div
+                                                        className={Css['goods-row-title']}>欧美尖头蝴蝶结拖鞋女夏外穿2019新款绸缎面细跟凉拖穆勒鞋
+                                                    </div>
+                                                    <div className={Css['goods-row-text']}>品质精选</div>
+                                                    <div className={Css['goods-row-img']}><img src=""/></div>
+                                                </div>
+                                                <div className={Css['goods-row']}>
+                                                    <div
+                                                        className={Css['goods-row-title']}>欧美尖头蝴蝶结拖鞋女夏外穿2019新款绸缎面细跟凉拖穆勒鞋
+                                                    </div>
+                                                    <div className={Css['goods-row-text']}>品质精选4折起</div>
+                                                    <div className={Css['goods-row-img']}><img src=""/></div>
+                                                </div>
+                                            </div>
+                                            <div className={Css['goods-list-wrap']}>
+                                                <div className={Css['goods-list']}>
+                                                    <div className={Css['title']}>小白鞋女2019春夏新款韩版百搭平底学生帆布鞋板鞋</div>
+                                                    <div className={Css['img']}><img src=""/></div>
+                                                    <div className={Css['price']}>￥288</div>
+                                                    <div className={Css['unprice']}>￥388</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    }

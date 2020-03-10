@@ -1,0 +1,5 @@
+.page{width: 100%;min-height: 100vh;background:#FFF}
+.main{width:100%;margin-top: 2.5rem;height: 2rem;display: flex;align-items: center;justify-content: space-around;
+   border-bottom: solid 1px #cccccc;position: fixed;top:0;background:#FFF;z-index: 10;margin-bottom: 2rem;}
+.tag{font-size: 0.8rem;text-align: center;height: 2rem;line-height:2rem;width:auto;flex: 1}
+.tag.active{border-bottom: 1px solid #ff5000;}

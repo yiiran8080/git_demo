@@ -1,0 +1,31 @@
+.page{width: 100%;min-height: 100vh;background-color: #ffffff;overflow: hidden}
+.main{width: 100%;margin-top: 3.5rem;margin-bottom: 3rem}
+.address-wrap{width: 100%;height: 4.8rem;position: relative;z-index: 1;border-bottom: #EFEFEF 1px solid}
+.address-wrap .person-info{width: auto;height: auto;position: absolute;z-index: 1;left: 1rem;top: 0;
+font-size: 0.7rem;font-weight: bold}
+.address-wrap .person-info span{padding-right: 2.5rem}
+.address-wrap .address{width: auto;height: auto;left: 1rem;top:2.4rem;font-size: 0.6rem;position: absolute;z-index: 1}
+.address-wrap .address img{width: 1rem;height: 1rem;vertical-align: middle;margin-right: 0.25rem}
+.goods-wrap{width: 100%;margin-top: 1rem;}
+.goods-wrap .goods-list{width: 92%;height: 5rem;margin: 0 auto;display: flex;
+align-items: center;margin-bottom: 1rem;overflow: hidden}
+.goods-wrap .goods-list .image{width: 3rem;height: 3rem;margin-right: 0.75rem}
+.goods-wrap .goods-list .image img{width: 100%;height: 100%}
+.goods-wrap .goods-list .goods-param{width: 75%}
+.goods-wrap .goods-list .goods-param .title{width: 100%;height: 1rem;overflow: hidden;font-size: 0.7rem;white-space: nowrap;
+text-overflow: ellipsis;font-weight: bold}
+.goods-wrap .goods-list .goods-param .attr{width: 100%;height: 1rem;font-size: 0.7rem;margin-top: 0.25rem;color: #868686;}
+.goods-wrap .goods-list .goods-param .attr span{padding-right: 1rem}
+.goods-wrap .goods-list .goods-param .amount{font-size: 0.6rem;color: #868686;margin-top: 0.25rem;}
+.goods-wrap .goods-list .goods-param .price{font-size: 0.7rem;color: #f51d2a;margin-top: 0.25rem;margin-left: -0.15rem}
+
+.total-wrap{width: 92%;margin: 0 auto;display: flex;justify-content: space-between;font-size: 0.8rem;margin-bottom: 0.8rem;}
+.total-wrap li:nth-child(1){color: #787878}
+.total-wrap li:nth-child(2){color: #f51d2a}
+
+.balance-wrap{width: 100%;height: 2.5rem;border-top:1px solid #EFEFEF;position: fixed;z-index: 5;left: 0;bottom: 0;
+    background-color: #ffffff;display: flex;}
+.balance-wrap .price-wrap{flex: 2;text-align: right;line-height: 2.5rem;padding-right: 0.5rem;font-size: 0.8rem}
+.balance-wrap .price-wrap span{color: #f51d2a}
+.balance-wrap .balance-btn{flex: 1;background-color: #cc0004;font-size: 0.8rem;color: #ffffff;
+line-height: 2.5rem;text-align: center;}

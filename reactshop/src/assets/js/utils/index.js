@@ -1,0 +1,18 @@
+//方法三：自定义函数方式接收参数
+export function localParam (search, hash) {
+    search = search || window.location.search;
+    hash = hash || window.location.hash;
+    var fn = function(str, reg) {
+        if (str) {
+            var data = {};
+            str.replace(reg, function($0, $1, $2, $3) {
+                data[$1] = $3;
+            });
+            return data;
+        }
+    };
+    return {
+        search : fn(search, new RegExp("([^?=&]+)(=([^&]*))?", "g")) || {},
+        hash : fn(hash, new RegExp("([^#=&]+)(=([^&]*))?", "g")) || {}
+    };
+}
