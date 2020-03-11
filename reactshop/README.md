@@ -3,7 +3,7 @@ React-Demo
 基于Reactjs && ES6 && Webpack构建移动端电商平台页面交互
 -----
 * 首页<br>
-![image](https://github.com/yiran8080/images/首页.jpg)
+![image](https://github.com/yiran8080/git_demo/blob/master/images/%E9%A6%96%E9%A1%B5.jpg)
 * 分类页面<br>
 ![image](https://github.com/yiran8080/images/分类页面.jpg)
 * 商品详情页<br>
