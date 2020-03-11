@@ -5,13 +5,13 @@ React-Demo
 * 首页<br>
 ![image](https://github.com/yiran8080/git_demo/blob/master/images/%E9%A6%96%E9%A1%B5.jpg)
 * 分类页面<br>
-![image](https://github.com/yiran8080/images/分类页面.jpg)
+![image](https://github.com/yiran8080/git_demo/blob/master/images/%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2.jpg)
 * 商品详情页<br>
-![image](https://github.com/yiran8080/images/商品详情页.jpg)
+![image](https://github.com/yiran8080/git_demo/blob/master/images/%E5%95%86%E5%93%81%E8%AF%A6%E6%83%85%E9%A1%B5.jpg)
 * 购物车页面<br>
-![image](https://github.com/yiran8080/images/购物车页面.jpg)
+![image](https://github.com/yiran8080/git_demo/blob/master/images/%E8%B4%AD%E7%89%A9%E8%BD%A6%E9%A1%B5%E9%9D%A2.jpg)
 * 商品结算页<br>
-![image](https://github.com/yiran8080/images/结算页面.jpg)
+![image](https://github.com/yiran8080/git_demo/blob/master/images/%E7%BB%93%E7%AE%97%E9%A1%B5%E9%9D%A2.jpg)
 * 订单管理页<br>
 ![image](https://github.com/yiran8080/git_demo/blob/master/images/%E8%AE%A2%E5%8D%95%E7%AE%A1%E7%90%86%E9%A1%B5%E9%9D%A2.jpg)
 
