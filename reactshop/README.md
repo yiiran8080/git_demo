@@ -2,16 +2,21 @@ React-Demo
 ====
 基于Reactjs && ES6 && Webpack构建移动端电商平台页面交互
 -----
-* 首页
-
-* 商品详情页
-* 购物车页面
-* 商品结算页
-* 生成订单号
-* 订单管理页
+* 首页<br>
+![image](https://github.com/yiran8080/git_demo/images/首页.jpg)
+* 分类页面<br>
+![image](https://github.com/yiran8080/git_demo/images/分类页面.jpg)
+* 商品详情页<br>
+![image](https://github.com/yiran8080/git_demo/images/商品详情页.jpg)
+* 购物车页面<br>
+![image](https://github.com/yiran8080/git_demo/images/购物车页面.jpg)
+* 商品结算页<br>
+![image](https://github.com/yiran8080/git_demo/images/结算页面.jpg)
+* 订单管理页<br>
+![image](https://github.com/yiran8080/git_demo/images/订单管理页面.jpg)
 
 克隆项目
-#### `> $ git clone `
+#### `> $ git clone git@github.com:yiran8080/git_demo.git`
 
 在当前目录下安装依赖包
 #### `> $ npm install`
