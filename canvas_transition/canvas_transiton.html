@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0}
+        a{
+            cursor: pointer;
+            text-decoration: none;
+        }
+        ul{position: absolute;right:10%;bottom:10px;list-style: none;z-index: 99;}
+        ul li{display:inline-block;margin-right: 5px;}
+        ul li a{color: #06f;font-size: 16px;}
+    </style>
+</head>
+<body>
+<canvas id="canvas" style="position: absolute; height: 100%; width:100%;left:0;top:0;background-color:#000">
+    您的浏览器不支持canvas!
+</canvas>
+<!--离屏canvas-->
+<canvas id="mainOffCanvas" style="display: none;"></canvas>
+<canvas id="offCanvas1" style="display: none;"></canvas>
+<canvas id="offCanvas2" style="display: none;"></canvas>
+<canvas id="offCanvas3" style="display: none;"></canvas>
+<canvas id="offCanvas4" style="display: none;"></canvas>
+<div class='preload' style="display: none;">
+    <img src="digital.jpg" alt="数字营销">
+    <img src="zhineng.jpg" alt="智能制造">
+    <img src="service.jpg" alt="共享服务">
+    <img src="jiagou.png" alt="架构支持">
+</div>
+<!--底部导航栏-->
+<ul style="display: none">
+    <li><a href ='01' onclick="return false;">数字营销</a></li>
+    <li><a href ='02' onclick="return false;">智能制造</a></li>
+    <li><a href ='03' onclick="return false;">共享服务</a></li>
+    <li><a href ='04' onclick="return false;">架构支持</a></li>
+</ul>
+<script src="offcanvas.js"></script>
+<script>
+//1.主画布架构
+//2.分画布布局
+//3.点击主画布固定区域，跳转到分画布
+var WINDOW_WIDTH = document.documentElement.clientWidth;
+var WINDOW_HEIGHT = document.documentElement.clientHeight;
+var MARGIN_LEFT = Math.round(WINDOW_WIDTH/6);
+var MARGIN_TOP = Math.round(WINDOW_HEIGHT/3);
+
+//两球之间的水平距离：
+var D =( WINDOW_WIDTH - 2*MARGIN_LEFT ) /3;
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+//离屏画布初始状态
+var mainOffCanvas = document.getElementById('mainOffCanvas');
+var ctx_main = mainOffCanvas.getContext('2d');
+
+var offCanvas1 = document.getElementById('offCanvas1');
+var ctx1 = offCanvas1.getContext('2d');
+
+var offCanvas2 = document.getElementById('offCanvas2');
+var ctx2 = offCanvas2.getContext('2d');
+
+var offCanvas3 = document.getElementById('offCanvas3');
+var ctx3 = offCanvas3.getContext('2d');
+
+var offCanvas4 = document.getElementById('offCanvas4');
+var ctx4 = offCanvas4.getContext('2d');
+
+canvas.width = offCanvas1.width = offCanvas2.width = offCanvas3.width = offCanvas4.width = mainOffCanvas.width = WINDOW_WIDTH;
+canvas.height = offCanvas1.height = offCanvas2.height = offCanvas3.height = offCanvas4.height= mainOffCanvas.height = WINDOW_HEIGHT;
+
+//为每一个离屏canvas绘制内容：
+var str;
+var title;
+var img;
+function init(ctx) {
+    switch (ctx) {
+        case ctx1:{
+            str = "\n作为全面布局数字营销产业链的头部营销公司,XX始终致力于成为全能力的数字营销领军者。现在,各地都实行了严格的限行措施,户外出行人口急剧减少,户外广告价值缩水明显。" +
+                "而作为数字营销领域的领先企业, XX却依托着自身丰富的行业经验,助力众多企业突出重围、转危为机。\n"
+                +"\n根据最近发布的《2020一季度企业CMO营销现状调查报告》,如今近80%的市场营销人都选择了重新规划上半年的营销策略,而近50%的公司开始搭建线上营销网络。";
+            title = '数字营销';
+            // var img  = new Image();
+            // img.src = 'digital.jpg';
+            img = document.getElementsByTagName('img')[0];
+            break;
+        }
+        case ctx2:{
+            str = '目前国内汽车、家电等行业自动化和信息化程度已经较高，其他3C，食品饮料，化工等行业正在加快自动化和信息化进程。\n'+
+                '\n《中国制造2025》提出：加快机械、航空、船舶、汽车、轻工、纺织、食品、电子等行业生产设备的智能化改造，提高精准制造、敏捷制造能力；' +
+                '发展基于互联网的个性化定制、众包设计、云制造等新型制造模式，推动形成基于消费需求动态感知的研发、制造和产业组织方式等。';
+            title = '智能制造';
+            // var img  = new Image();
+            // img.src = 'zhineng.jpg';
+            img = document.getElementsByTagName('img')[1];
+            break;
+        }
+        case ctx3:{
+            str = '共享服务最早开始于20世纪80年代的西方发达国家,90年代开始推广,21世纪初加快了推广步伐。美国福特汽车、通用电气等最先开始实施共享服务。国内的大型集团企业如国美、平安、中兴、长虹、海尔等也陆续采用共享服务来优化管理。财务共享是共享服务中最' +
+                '主要的服务形式,它以客户的需求为导向,按照市场价格和服务水平协议,为企业内部多个分支机构,或集团内部多个分公司,及外部企业提供跨地区的专业化财务共享服务。';
+            title = '共享服务';
+            // new Image().src = 'service.jpg';
+            img = document.getElementsByTagName('img')[2];
+            break;
+        }
+        case ctx4:{
+            str = '企业架构如同战略规划，可以帮助企业执行业务战略规划及IT战略规划。在业务战略方面，可使用TOGAF及其架构开发方法论（ArchitectureDevelopmentMethod/ADM）来定义企业愿景/使命，目标/目的/驱动力，组织架构，职能及角色。在IT战略方面，TOGAF及ADM详细' +
+                '描述了如何定义业务架构，数据架构，应用架构，和技术架构，是IT战略规划的最佳实践指引。企业架构是承接企业业务战略与IT战略之间的桥梁与标准接口，是企业信息化规划的核心。';
+            title = '架构支持';
+            // new Image().src = 'jiagou.png';
+            img = document.getElementsByTagName('img')[3];
+            break;
+        }
+    }
+        ctx.drawImage(img,MARGIN_LEFT, MARGIN_TOP+30,380,200);
+        ctx.font = '30px bold 宋体';
+        ctx.fillStyle = '#FFF';
+        ctx.fillText(title,MARGIN_LEFT,MARGIN_TOP-30);//写入标题
+        canvasTextAutoLine(str,ctx,3*MARGIN_LEFT,MARGIN_TOP+30,25);//写入段落
+}
+var r = 0;
+var r2 = r;
+var percent = 0;
+var render_log;
+var navs = document.getElementsByTagName('ul')[0];
+var items = navs.getElementsByTagName('li');
+window.onload = function () {
+    init(ctx1);
+    init(ctx2);
+    init(ctx3);
+    init(ctx4);
+    //把四个小离屏canvas绘制在一个mainOffcanvas上
+    ctx_main.drawImage(offCanvas1,0,0,WINDOW_WIDTH,WINDOW_HEIGHT,20,20,WINDOW_WIDTH/2,WINDOW_HEIGHT/2);
+    ctx_main.drawImage(offCanvas2,0,0,WINDOW_WIDTH,WINDOW_HEIGHT,600,20,WINDOW_WIDTH/2,WINDOW_HEIGHT/2);
+    ctx_main.drawImage(offCanvas3,0,0,WINDOW_WIDTH,WINDOW_HEIGHT,20,300,WINDOW_WIDTH/2,WINDOW_HEIGHT/2);
+    ctx_main.drawImage(offCanvas4,0,0,WINDOW_WIDTH,WINDOW_HEIGHT,600,300,WINDOW_WIDTH/2,WINDOW_HEIGHT/2);
+    render();
+};
+//以下：主canvas首屏动画内容
+ctx.globalAlpha = 0.95;
+var render = function () {
+        ctx.globalCompositeOperation = 'destination-in';//只显示和新图像重叠的旧图像
+        ctx.fillRect(0,0,WINDOW_WIDTH,WINDOW_HEIGHT);//当前画面透明，只显示和新画面重叠的旧画面，比当前圆圈更小的圆圈
+        ctx.globalCompositeOperation = "source-over";
+        move();                                  //画新画面
+        drawCurve();
+        render_log = window.requestAnimationFrame(render);
+};
+//画圆，控制半径变化
+function move(){
+    //ctx.fillRect(0,0,WINDOW_WIDTH,WINDOW_WIDTH);
+    r +=0.6;
+    if(r >= 80){r=0;window.cancelAnimationFrame(render_log)}
+    let circle1 = new getCircle(MARGIN_LEFT,MARGIN_TOP,r,'数字营销');
+    let circle2 = new getCircle(MARGIN_LEFT + D,WINDOW_HEIGHT-MARGIN_TOP,r,'共享服务');
+    let circle3 = new getCircle(MARGIN_LEFT +2*D,MARGIN_TOP,r,'智能制造');
+    let circle4 = new getCircle(WINDOW_WIDTH-MARGIN_LEFT,WINDOW_HEIGHT-MARGIN_TOP,r,'架构支持');
+    circle1.draw();
+    circle2.draw();
+    circle3.draw();
+    circle4.draw();
+}
+//画圆形的构造函数 #FED200
+function getCircle(x,y,r,text,large) {
+    this.x = x;
+    this.y = y;
+    this.r = r;
+    this.draw = function(){
+        ctx.font='20px 微软雅黑';
+        ctx.beginPath();
+        ctx.arc(this.x,this.y,this.r>0?this.r:0,0,Math.PI*2);
+
+        ctx.fillStyle='#FFF';
+        //点击后圆形扩散的效果
+        if(large){
+            ctx.lineWidth=20;
+            // ctx.shadowOffsetX=10;
+            // ctx.shadowBlur =10;
+            ctx.fillStyle = "rgba(176,196,222,0.9)";
+            //ctx.strokeStyle = "#4682B4";
+            ctx.fill();
+        }else {
+            ctx.lineWidth = 2;
+            ctx.fillText(text,x-38,y+5);
+        }
+
+       // ctx.strokeStyle = "rgba(176,196,222,1)";
+       ctx.strokeStyle = "#5599ff";
+        ctx.stroke();
+        ctx.closePath();
+    }
+}
+
+//画白色动画路径
+function drawCurve() {
+    percent =percent+1;
+    if(percent>=90){percent=0;}
+    //drawCurvePath([MARGIN_LEFT + D-68,WINDOW_HEIGHT-MARGIN_TOP-6],[MARGIN_LEFT+5,MARGIN_TOP+5],0.6,percent);
+    drawCurvePath([MARGIN_LEFT + D-88,WINDOW_HEIGHT-MARGIN_TOP-6],[MARGIN_LEFT+5,MARGIN_TOP+5],0.4,percent-7);
+    drawCurvePath([MARGIN_LEFT + D-88,WINDOW_HEIGHT-MARGIN_TOP-6],[MARGIN_LEFT+5,MARGIN_TOP+5],0.2,percent-17);
+
+    drawCurvePath([MARGIN_LEFT +2*D-20,MARGIN_TOP+50],[MARGIN_LEFT + D+40,WINDOW_HEIGHT-MARGIN_TOP-20],0.3,percent);
+    drawCurvePath([MARGIN_LEFT +2*D-20,MARGIN_TOP+50],[MARGIN_LEFT + D+60,WINDOW_HEIGHT-MARGIN_TOP],0.4,percent-5);
+
+
+    drawCurvePath([WINDOW_WIDTH-MARGIN_LEFT-88,WINDOW_HEIGHT-MARGIN_TOP-6],[MARGIN_LEFT +2*D+5,MARGIN_TOP+5],0.2,percent-8);
+    drawCurvePath([WINDOW_WIDTH-MARGIN_LEFT-88,WINDOW_HEIGHT-MARGIN_TOP-6],[MARGIN_LEFT +2*D+5,MARGIN_TOP+5],0.4,percent);
+}
+//画路径的函数 p0 ---p1 ---p2 每一段路径上都以点B为终点，点Q0为控制点
+function drawCurvePath(start,end,curv,percent){
+    // ctx.save();
+    // curv：曲线曲度（0，1）
+       //利用曲线曲度计算中间点
+       let t = percent/100;
+       let point = [
+           ( start[ 0 ] + end[ 0 ] ) / 2 - ( start[ 1 ] - end[ 1 ] ) * curv,
+           ( start[ 1 ] + end[ 1 ] ) / 2 - ( end[ 0 ] - start[ 0 ] ) * curv
+       ];
+       let p0 = start;
+       let p1 = point;
+       let p2 = end;
+       let v01 = [p1[0]-p0[0],p1[1]-p0[1]]; //p0p1向量
+       let v12 = [p2[0]-p1[0],p2[1]-p1[1]]; //p1p2向量
+       //求p0p1上的点Q0
+       let q0 = [p0[0]+v01[0]*t,p0[1]+v01[1]*t];
+       //求p1p2上的点Q1
+       let q1 = [p1[0]+v12[0]*t, p1[1]+v12[1]*t];
+       //求向量Q0Q1
+       let v = [q1[0]-q0[0],q1[1]-q0[1]];
+       //求向量Q0Q1与贝塞尔曲线的交点B，即当前曲线段的终点
+       let b = [q0[0] +v[0]*t, q0[1]+v[1]*t ];
+
+       //路径发光特效，只让路径发光，不影响圆形，加save()restore()方法
+        ctx.save();
+        ctx.beginPath();
+        ctx.shadowColor = '#FFF';
+        ctx.shadowBlur = 3;
+        ctx.moveTo(start[0],start[1]);//起始点坐标
+        ctx.quadraticCurveTo(q0[0],q0[1],b[0],b[1]);
+
+       //路径上的发光小圆球特效
+        ctx.lineWidth = 0.5;
+        ctx.strokeStyle = '#FFF';
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.fillStyle = "rgba(255,255,255,0.8)";
+        ctx.arc(b[0],b[1],4,0,Math.PI*2);
+        ctx.fill();
+        ctx.restore();
+        ctx.closePath();
+
+}
+//贝塞尔曲线方程 B = (1-t)^2 *P0 + 2t(1-t)P1 + t^2 *P2
+// function getBezier(p0,p1,p2,t) {
+//     return (1-t)*(1-t)*p0 + 2*t*(1-t)*p1 +t*t*p2;
+// }
+
+//鼠标点击相应圆圈范围内，切换离屏画布
+canvas.onmousedown = function (e) {
+    let event = e||window.event;
+    let x = e.clientX - canvas.offsetLeft;
+    let y = e.clientY - canvas.offsetTop;
+    //console.log(x,y);
+    //如果在第一个圆形的范围内
+    if(event.button === 0){
+        if(Math.abs(x - MARGIN_LEFT) <=80 && Math.abs(y - MARGIN_TOP) <=80){
+            id = getCentre(1);
+            largeCircle();
+        }
+        //如果在第二个圆形内//共享服务
+        if(Math.abs(x -( MARGIN_LEFT + D)) <=80 && Math.abs(y -(WINDOW_HEIGHT-MARGIN_TOP)) <=80){
+            id = getCentre(3);
+            largeCircle();
+        }
+        //第三个
+        if(Math.abs(x - (MARGIN_LEFT +2*D)) <=80 && Math.abs(y -MARGIN_TOP) <=80){
+            id = getCentre(2);
+            largeCircle();
+        }
+        //第四个
+        if(Math.abs(x - (WINDOW_WIDTH-MARGIN_LEFT)) <=80 && Math.abs(y -(WINDOW_HEIGHT-MARGIN_TOP)) <=80){
+            id = getCentre(4);
+            largeCircle();
+        }
+    }
+
+};
+//扩大圆形动态，切换至离屏canvas
+function largeCircle(){
+    r2+=30;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    let circle5 = new getCircle(x,y,r2,"",'large');
+    circle5.draw();
+    let log = window.requestAnimationFrame(largeCircle);
+    if (r2 >= canvas.width){ //圆形已经扩大至边界，切换
+        r2 = canvas.width;
+        //停止两个循环操作
+        window.cancelAnimationFrame(log);
+        window.cancelAnimationFrame(render_log);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        smallCircle();
+        // ctx.drawImage(mainOffCanvas,0,0,canvas.width,canvas.height);
+    }
+
+}
+
+//转场动画：让圆形放大后再缩小回相应的圆心
+function smallCircle() {
+    //图片距离屏幕左侧与上方的距离：
+
+    r2-=25;
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    let circle6 = new getCircle(x,y,r2,"","large");
+    circle6.draw();
+    let log3 = window.requestAnimationFrame(smallCircle);
+    if(r2 <= 10){
+        r2 = 10;
+        window.cancelAnimationFrame(log3);
+        //将页面切换至离屏canvas
+        temp();
+    }
+}
+//用作切换的方法
+function temp() {
+    ctx.drawImage(mainOffCanvas,0,0,canvas.width,canvas.height);
+    //初始化计算位置需要用到的坐标值
+    [a,b,p,q] = canvasStart();
+    //画装饰性矩形框
+    drawRect(p,q);
+    //Mainoffcanvas停留一段时间再切换页面
+    setTimeout("offInit()",600);
+}
+//根据不同的圆形，获得不同的圆心坐标值,使函数largeCircle可以访问到，不用传参
+var x;
+var y;
+var id;
+function getCentre(id) {
+    switch (id) {
+        case 1:{
+            x = MARGIN_LEFT;
+            y = MARGIN_TOP;
+            break;
+        }
+        case 2:{
+            x = MARGIN_LEFT +2*D;
+            y = MARGIN_TOP;
+            break;
+        }
+        case 3:{
+            x = MARGIN_LEFT + D;
+            y = WINDOW_HEIGHT-MARGIN_TOP;
+            break;
+        }
+        case 4:{
+            x = WINDOW_WIDTH-MARGIN_LEFT;
+            y = WINDOW_HEIGHT-MARGIN_TOP;
+            break;
+        }
+    }
+    return id;
+}
+</script>
+</body>
+</html>
