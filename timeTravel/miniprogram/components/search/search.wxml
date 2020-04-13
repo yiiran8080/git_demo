@@ -1,0 +1,52 @@
+<!--components/search.wxml-->
+<view class="container">
+	<view class="header">
+		<view class="search-container">
+			<image class="icon" src="../../images/icon/search@2x.png" />
+			<input value="{{q}}" bindconfirm="onConfirm" placeholder-class="in-bar" placeholder="书籍名" class="bar" auto-focus="true" />
+			<image bind:tap="cancelSearch" class="cancel-img" src="images/cancel@2x.png" />
+		</view>
+		<view class="cancel" bind:tap="onCancel">取消</view>
+	</view>
+	<!-- 历史搜索，热门搜索 -->
+	<view wx:if="{{!resulting}}">
+		<view class="history">
+			<view class="title">
+				<view class="chunk"></view>
+				<text>历史搜索</text>
+				<!-- 引入tag组件 遍历历史搜索标签 -->
+			</view>
+			<view class="tags">
+				<block wx:for="{{historyWords}}" wx:key="content">
+					<tag-cmp bind:tagging="onConfirm" text="{{item}}" />
+				</block>
+			</view>
+		</view>
+
+		<view class="history hot">
+			<view class="title">
+				<view class="chunk"></view>
+				<text>热门搜索</text>
+			</view>
+      <!-- 热门搜索标签 -->
+      <view class="tags">
+				<block wx:for="{{hotWords}}" wx:key="content">
+					<tag-cmp bind:tagging='onConfirm' text="{{item}}" />
+				</block>
+			</view>
+		</view>
+	</view>
+
+  <!-- 显示搜索结果 -->
+  <view class='books-container' wx:if="{{resulting}}">
+    <block wx:for="{{searchResult}}" wx:key="id">
+      <book-cmp book="{{item}}"/>
+    </block>
+  </view>
+  <!-- 没有搜索结果 -->
+  <text class="empty-tip" wx:if="{{noneResult}}">没有搜索结果</text>
+  <!-- loading效果 第一个：点击搜索后发生 -->
+  <loading-cmp class="loading-center" wx:if="{{loadingCenter}}"/>
+  <!-- 第二个：下拉结果后发生 -->
+  <loading-cmp wx:if="{{loading}}"/>
+</view>

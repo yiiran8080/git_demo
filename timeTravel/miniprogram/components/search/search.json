@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "tag-cmp":"../../components/tag/index",
+    "book-cmp":"../../components/book/index",
+    "loading-cmp":"../../components/loading/index"
+  }
+}

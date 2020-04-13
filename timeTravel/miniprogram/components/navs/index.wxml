@@ -1,0 +1,6 @@
+<!--components/navs/index.wxml-->
+<view class="container">
+  <image bind:tap = "left" class = "{{first?'white_icon':'icon'}}" src="{{first?no_previous:previous}}"/>
+  <text class = "title">{{title}}</text>
+  <image bind:tap = "right" class = "{{last?'white_icon':'icon'}}" src="{{last?no_next:next}}"/>
+</view>

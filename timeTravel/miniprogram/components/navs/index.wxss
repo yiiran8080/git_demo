@@ -1,0 +1,23 @@
+/* components/navs/index.wxss */
+.container{
+  width: 600rpx;
+  height: 80rpx;
+  background-color: #f7f7f7;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon{
+  padding: 15rpx;
+  height: 40rpx;
+  width:40rpx;
+}
+.white_icon{
+  padding: 15rpx;
+  height: 60rpx;
+  width: 60rpx;
+}
+.title{
+  font-size: 28rpx;
+}

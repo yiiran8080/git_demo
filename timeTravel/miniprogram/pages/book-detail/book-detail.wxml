@@ -1,0 +1,82 @@
+<!--miniprogram/pages/book-detail/book-detail.wxml-->
+<wxs src="../../utils/filter.wxs" module="util"></wxs>
+<view class="container">
+	<!-- 书籍 -->
+	<view class="head">
+		<image src="{{detail.image}}" />
+		<text class = "title">{{detail.title}}</text>
+		<text class = "author">{{detail.author}}</text>
+	</view>
+	<!-- 短评标签列表 -->
+	<view class="sub-container">
+		<text class = "headline">短评</text>
+    <text class = 'null-info' wx:if="{{comments==false}}">评论区是空的哦</text>
+		<view class="tag-container">
+			<block wx:for="{{util.limit(comments,10)}}" wx:key="id">
+				<!-- 使用插槽传递评论num数据,传递外部样式 tag-class="ex-tag" -->
+				<tag-cmp text="{{item.content}}">
+					<text slot = "after" class="num">{{'+'+item.nums}}</text>
+				</tag-cmp>
+			</block>
+		</view>
+	</view>
+	<!-- 内容简介部分 -->
+	<view class="sub-container">
+		<text class = "headline">内容简介</text>
+		<text class="content" decode="{{true}}">{{util.format(detail.summary)}}</text>
+	</view>
+	<!-- 书信息 -->
+	<view class="sub-container">
+		<text class = "headline">书本信息</text>
+		<view class="detail-container">
+			<view class='vertical description'>
+				<text>出版社</text>
+				<text>出版年</text>
+				<text>页数</text>
+				<text>定价</text>
+				<text>装帧</text>
+			</view>
+			<view class='vertical'>
+				<text>{{detail.publisher}}</text>
+				<text>{{detail.pubdate}}</text>
+				<text>{{detail.pages}}</text>
+				<text>{{detail.price}}</text>
+				<text>{{detail.binding}}</text>
+			</view>
+		</view>
+	</view>
+	<!-- 短评输入框 -->
+	<view class="post-container" wx:if="{{!posting}}">
+		<view class="post-fake" bind:tap="onPost">
+			<text>输入短评</text>
+		</view>
+		<!-- 点赞分享区域 -->
+		<view class="like-container">
+			<favor-cmp class="favor" bind:my-like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+			<img-btn-cmp class="share-btn" open-type="share">
+				<image slot='img' src="../../images/icon/share@2x.png" class="share" />
+			</img-btn-cmp>
+		</view>
+		
+	</view>
+
+</view>
+<!-- 真正的评论输入框 -->
+<view class="real-post-container" wx:if="{{posting}}">
+	<view class="post-header">
+		<text wx:if="{{!(comments==false)}}">可点击标签+1</text>
+    <text class="null-info" wx:else>暂无标签</text>
+		<text class="cancel" bind:tap="onCancel">取消</text>
+	</view>
+  <!-- 排名前三的评论标签 -->
+	<view class="comment-container">
+    <block wx:for="{{util.limit(comments,3)}}" wx:key="content">
+    <!-- 监听自定义事件--点击标签 -->
+				<tag-cmp text="{{item.content}}" bind:tagging="onComment">
+					<text slot = "after" class="num">{{'+'+item.nums}}</text>
+				</tag-cmp>
+			</block>
+	</view>
+	<input bindconfirm="onComment" class="post" placeholder="最多可评论12字" />
+</view>
+<mask-cmp wx:if="{{posting}}"/>

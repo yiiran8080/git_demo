@@ -1,0 +1,7 @@
+<!--components/classic/movies/index.wxml-->
+<!-- 电影部分组件，图片+文字 -->
+<view hidden = "{{hidden}}" class="classic-container">
+  <image class = "classic-img" src="{{img}}"/>
+  <image class = "tag" src="../movies/images/movie@2x.png"/>
+  <text class = "content">{{content}}</text>
+</view>

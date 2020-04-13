@@ -1,0 +1,5 @@
+<!--components/favor/index.wxml-->
+<view bind:tap='onlike' class='container'>
+<image src='{{like?yesSrc:noSrc}}'/>
+<text>{{count}}</text>
+</view>

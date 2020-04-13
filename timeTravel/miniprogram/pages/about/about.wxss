@@ -1,0 +1,16 @@
+/* miniprogram/pages/about/about.wxss */
+.container{
+  margin-top: 50%;
+}
+.text{
+  padding: 30rpx;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed #00cccc;
+  border-radius: 10px;
+}
+/* .container :nth-child(1){
+  font-size: 20rpx;
+} */

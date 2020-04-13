@@ -1,0 +1,8 @@
+<!--miniprogram/pages/about/about.wxml-->
+<view class="container">
+	<view class="text">
+		<text>制作小程序，请联系</text>
+		<text>15841871990</text>
+	</view>
+
+</view>

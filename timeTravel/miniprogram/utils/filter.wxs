@@ -1,0 +1,16 @@
+//将文字中的\\n转换成\n
+var format = function(text){
+  if(!text){return;}
+  var reg = getRegExp("\\\\n","g");
+  return text.replace(reg,'\n&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+}
+//过滤过多的短评
+var limit = function(array,length){
+  if(!array){return;}
+  return array.slice(0,length);
+}
+//不能用const --不能用js  es6语法
+module.exports={
+  format:format,
+  limit:limit
+}

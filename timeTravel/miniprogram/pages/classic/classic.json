@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "favor-cmp":"/components/favor/index",
+    "movie-cmp":"../../components/classic/movies/index",
+    "music-cmp":"../../components/classic/music/index",
+    "essay-cmp":"../../components/classic/essay/index",
+    "magazine-cmp":"../../components/magazine/index",
+    "nav-cmp":"../../components/navs/index",
+    "img-btn-cmp":"../../components/image-button/index"
+  }
+}

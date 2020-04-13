@@ -1,0 +1,7 @@
+<!--components/tag/index.wxml-->
+<view class="container tag-class" bind:tap="onTap">
+	<text>{{text}}</text>
+  <!-- num有时需要，有时不需要，插槽可以传递num数据，或传递其他标签，代替slot -->
+  <!-- <text>{{num}}</text> -->
+  <slot name="after"></slot>
+</view>

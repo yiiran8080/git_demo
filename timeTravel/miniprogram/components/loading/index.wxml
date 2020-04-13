@@ -1,0 +1,6 @@
+<!--components/loading/index.wxml-->
+<!-- 加载时的动画效果 -->
+<view class="spinner">
+ <view class="double-bounce1"></view>
+ <view class="double-bounce2"></view>
+</view>

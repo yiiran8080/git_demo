@@ -1,0 +1,25 @@
+<!--miniprogram/pages/classic/classic.wxml-->
+<view class='container'>
+	<view class="header">
+		<!-- 期刊号No.组件 -->
+		<magazine-cmp class="magazine" index="{{classic.index}}" />
+		<!-- 点赞分享组件 -->
+		<view class="like-container">
+			<favor-cmp class="favor" bind:my-like="onLike" like="{{likeStatus}}" count="{{likeCount}}" />
+			<img-btn-cmp class="share-btn" open-type="share">
+				<image slot='img' src="../../images/icon/share@2x.png" class="share" />
+			</img-btn-cmp>
+		</view>
+	</view>
+
+	<!-- 电影组件 以下三种根据类别选择-->
+	<movie-cmp hidden="{{classic.type!=100}}" img="{{classic.image}}" content="{{classic.content}}" />
+	<!-- 音乐组件 -->
+	<music-cmp wx:if="{{classic.type===200}}" img="{{classic.image}}" content="{{classic.content}}" musicSrc="{{classic.url}}" />
+	<!-- 句子组件 -->
+	<essay-cmp hidden="{{classic.type!=300}}" img="{{classic.image}}" content="{{classic.content}}" />
+
+
+	<!-- 跳转期刊组件 -->
+	<nav-cmp bind:left="onPrevious" bind:right="onNext" title="{{classic.title}}" first="{{first}}" last="{{last}}" class='nav' />
+</view>

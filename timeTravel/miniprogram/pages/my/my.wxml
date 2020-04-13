@@ -1,0 +1,36 @@
+<!--pages/my/my.wxml-->
+<view class="container">
+	<image src="/images/my/my@bg.png" class="bg"/>
+  <!-- <open-data type="userAvatarUrl" class="avatar avatar-position"></open-data> -->
+
+  <!-- 自定义button 传递自定义属性open-type,监听自定义事件getuserinfo-->
+  <img-button-cmp wx:if="{{!authorized}}" open-type="getUserInfo" bind:getuserinfo="onGetUserInfo" class="avatar-position">
+    <image slot='img' class="avatar" src="../../images/my/click.png"/>
+  </img-button-cmp>
+	<view wx:if="{{authorized}}" class="avatar-container avatar-position">
+		<image src="{{userInfo.avatarUrl}}" class="avatar"/>
+		<text>{{userInfo.nickName}}</text>
+	</view>
+	<!-- 关于我们--跳转其他页面 -->
+	<view class="about-container">
+		<view class="about-us" bind:tap="onJumpTo">
+			<image src="/images/my/about.png" />
+			<text class="description">关于我们</text>
+		</view>
+		<view class="about-us">
+			<text class="book-num">{{bookCount}}</text>
+			<text class="description">喜欢的书</text>
+		</view>
+	</view>
+  <!-- 获取用户信息 小程序原生button-->
+  <!-- <button open-type="getUserInfo" bind:getUserInfo="getUserInfo">授权</button> -->
+  <view class="like-container">
+		<image class="headline" src="../../images/my/like.png"/>
+		<view class="preview-container">
+			<block wx:for="{{classics}}" wx:key="content">
+				<preview-cmp class="preview" classic="{{item}}"/>
+			</block>
+		</view>
+	</view>
+
+</view>
