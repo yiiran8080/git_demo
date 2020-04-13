@@ -9,4 +9,5 @@
 -项目对组件的封装高度可复用。点赞等功能组件均在组件内部进行了基本的功能实现，不涉及具体的业务逻辑。在多个不同页面调用时，由页面通过传递propertise的形式传递数据。
 
 ### 效果图片
-![网络不佳，可点击链接] (https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E4%B8%AD.jpg)
+![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E4%B8%AD.jpg)
+
