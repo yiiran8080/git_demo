@@ -11,17 +11,30 @@
 ### 效果图片
 
 --音乐播放中，可通过外部音乐播放器管理。
+
 ![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E4%B8%AD.jpg)
+
 --影视推荐
+
 ![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E7%94%B5%E5%BD%B1.jpg)
+
 --关键词图书搜索组件
+
 ![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E6%90%9C%E7%B4%A2%E7%BB%84%E4%BB%B6.jpg)
+
 --图书搜索结果
+
 ![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E6%90%9C%E7%B4%A2%E5%9B%BE%E4%B9%A6.jpg)
+
 --添加图书点评
+
 ![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E6%B7%BB%E5%8A%A0%E7%9F%AD%E8%AF%84.jpg)
+
 --点击按钮发起授权请求
+
 ![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E8%AF%B7%E6%B1%82%E6%8E%88%E6%9D%83.jpg)
+
 --授权成功，展示用户信息
+
 ![网络不佳](https://github.com/yiran8080/git_demo/blob/master/timeTravel/final_images/%E8%8E%B7%E5%8F%96%E6%8E%88%E6%9D%83%E5%90%8E.jpg)
 
